@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const judge = require('./judge');
+const isValidID = require('./judge').isValidID;
+const isAnswer = require('./judge').isAnswer;
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
-    console.log(`prob | ${req.url} | ${Date.now()}`);
+    // console.log(`problem${req.url} | ${Date.now()}`);
     next();
 });
 // define the home page route
@@ -14,22 +15,31 @@ router.get('/', function(req, res) {
 // define the about route
 router.get('/:id/', function(req, res) {
     var id = req.params.id;
-    var answer = req.params.answer;
-    res.send(`Problem ${id}`);
+    if (isValidID(id)) {
+        res.send(`Problem ${id}`);
+        console.log(`problem${req.url} |`);
+    } else {
+        res.status(404).send('No such problem :(');
+    }
 });
 router.get('/:id/:answer', function(req, res) {
     var id = req.params.id;
     var answer = req.params.answer;
-    var newID = judge.check(id, answer)
-    if (newID !== null) {
-        res.redirect(`../${newID}`)
-        console.log(`prob | ${req.url} | Right answer ${answer} -> ${newID}`);
+    if (isValidID(id)) {
+        var newID = isAnswer(id, answer);
+        if (newID !== null) {
+            res.redirect(`../${newID}`)
+            console.log(`problem${req.url} | Right answer ${answer} -> ${newID}`);
+        } else {
+            res.send(`Problem ${id} with wrong answer`);
+            console.log(`problem${req.url} | Wrong answer ${answer}`);
+        }
+    } else {
+        res.status(404).send('No such problem :(');
     }
-    res.send(`Problem ${id} with wrong answer`);
-    console.log(`prob | ${req.url} | Wrong answer ${answer}`);
 });
 router.use(function(req, res, next) {
-    res.status(404).send('No such problem :(');
+    res.status(404).send('No such page :(');
 });
 
 module.exports = router;
