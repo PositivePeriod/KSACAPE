@@ -4,6 +4,8 @@
   "description": "KSA 2021 SAF 필수행사 & 퀴디치 사이트",
   "main": "main.js",
   "scripts": {
+    "dev": "node main.js",
+    "prod": "node prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

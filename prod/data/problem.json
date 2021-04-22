@@ -1,0 +1,6 @@
+{
+    "1": { "answer": "KSA", "next": "kingdom" },
+    "kingdom": { "answer": "spy", "next": "ocean" },
+    "ocean": { "answer": "fish", "next": "winnerwinnerchickendinner" },
+    "winnerwinnerchickendinner": {"answer": null, "next": null}
+}
