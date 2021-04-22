@@ -1,3 +1,6 @@
+var fs = require('fs');
+var path = require('path');
+
 var express = require('express');
 var router = express.Router();
 const isValidID = require('./judge').isValidID;
@@ -16,7 +19,13 @@ router.get('/', function(req, res) {
 router.get('/:id/', function(req, res) {
     var id = req.params.id;
     if (isValidID(id)) {
-        res.send(`Problem ${id}`);
+        const data = {
+            title: id,
+            body: fs.readFileSync(path.resolve(__dirname, `../views/body/${id}.html`), 'utf8')
+        }
+        res.render('problem.ejs', data);
+        // res.send(`Problem ${id}`);
+
         console.log(`problem${req.url} |`);
     } else {
         res.status(404).send('No such problem :(');
@@ -31,7 +40,8 @@ router.get('/:id/:answer', function(req, res) {
             res.redirect(`../${newID}`)
             console.log(`problem${req.url} | Right answer ${answer} -> ${newID}`);
         } else {
-            res.send(`Problem ${id} with wrong answer`);
+            res.redirect(`../${id}`)
+            // res.send(`Problem ${id} with wrong answer`);
             console.log(`problem${req.url} | Wrong answer ${answer}`);
         }
     } else {
