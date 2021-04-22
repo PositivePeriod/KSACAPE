@@ -1,11 +1,16 @@
+const version = 'v1';
+
 const path = require('path');
 const express = require('express');
-const mainRouter = require('./v1/src/mainRouter');
-const problemRouter = require('./v1/src/problemRouter');
+const mainRouter = require(`./${version}/src/mainRouter`);
+const problemRouter = require(`./${version}/src/problemRouter`);
 
 const app = express();
 
-app.use('/asset', express.static(path.join(__dirname, '/v1/asset')));
+app.set('views', path.join(__dirname, `${version}/views`));
+app.set('view-engine', 'ejs');
+app.use('/assets', express.static(path.join(__dirname, `/${version}/assets`)));
+
 app.use('/problem', problemRouter);
 app.use('/', mainRouter)
 
