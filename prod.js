@@ -1,4 +1,4 @@
-const version = 'v1';
+const version = 'prod';
 
 const path = require('path');
 const express = require('express');
