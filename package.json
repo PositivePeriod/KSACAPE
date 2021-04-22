@@ -2,7 +2,7 @@
   "name": "ksacape",
   "version": "1.0.0",
   "description": "KSA 2021 SAF 필수행사 & 퀴디치 사이트",
-  "main": "main.js",
+  "main": "prod.js",
   "scripts": {
     "dev": "node main.js",
     "prod": "node prod.js",
