@@ -1,25 +1,26 @@
 {
-  "name": "ksacape",
-  "version": "1.0.0",
-  "description": "KSA 2021 SAF 필수행사 & 퀴디치 사이트",
-  "main": "prod.js",
-  "scripts": {
-    "dev": "node main.js",
-    "prod": "node prod.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PositivePeriod/KSACAPE.git"
-  },
-  "author": "KSA 2021 SAF 추진위원회 필수행사 & 퀴디치",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PositivePeriod/KSACAPE/issues"
-  },
-  "homepage": "https://github.com/PositivePeriod/KSACAPE#readme",
-  "dependencies": {
-    "ejs": "^3.1.6",
-    "express": "^4.17.1"
-  }
+    "name": "ksacape",
+    "version": "1.0.0",
+    "description": "KSA 2021 SAF 필수행사 & 퀴디치 사이트",
+    "main": "prod.js",
+    "scripts": {
+        "start": "node prod.js",
+        "dev": "node main.js",
+        "prod": "node prod.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PositivePeriod/KSACAPE.git"
+    },
+    "author": "KSA 2021 SAF 추진위원회 필수행사 & 퀴디치",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/PositivePeriod/KSACAPE/issues"
+    },
+    "homepage": "https://github.com/PositivePeriod/KSACAPE#readme",
+    "dependencies": {
+        "ejs": "^3.1.6",
+        "express": "^4.17.1"
+    }
 }
